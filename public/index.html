@@ -131,6 +131,7 @@ body.touch #prompt{bottom:auto;top:calc(42% + env(safe-area-inset-top,0px))}body
 #comboBox{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));top:calc(240px + env(safe-area-inset-top,0px));width:180px;text-align:right;pointer-events:none;z-index:3;--cc:#ffd23a;font-family:var(--f-ui)}#comboBox .n{font:700 34px/1 var(--f-title,serif);color:var(--cc);text-shadow:0 0 10px var(--cc),0 2px 0 #000,0 0 3px #000}#comboBox .b{font-size:12px;color:#ece4d4;text-shadow:0 1px 2px #000;margin-top:2px}#comboBox .tm{height:3px;background:#0008;margin-top:3px}#comboBox .tm i{display:block;height:100%;background:var(--cc);width:0}#comboBox .fury{margin-top:8px;display:flex;align-items:center;gap:6px;justify-content:flex-end;font-size:12px;color:#ffb0a0;text-shadow:0 1px 2px #000}#comboBox .fury div{width:110px;height:7px;background:#1a0a08cc;border:1px solid #6a2a1a}#comboBox .fury i{display:block;height:100%;width:0;background:linear-gradient(90deg,#8a1a0a,#ff4a2a)}#comboBox .fury.full i{background:linear-gradient(90deg,#ff4a2a,#ffd0a0);box-shadow:0 0 8px #ff4a2a}
 .skrow{position:relative}.skrow .skup{position:absolute;right:4px;top:4px;min-width:26px;padding:0 6px}.skhead{font-size:13px;color:#ffd86a;margin-bottom:6px}
 @media (max-width:760px){#comboBox{top:calc(300px + env(safe-area-inset-top,0px));width:140px}#comboBox .n{font-size:26px}}
+.wmsec{margin:6px 0 10px}.wmsec>b{display:block;color:#ffd86a;margin-bottom:3px}.wmrow{display:flex;justify-content:space-between;gap:8px;padding:3px 8px;border:1px solid #3a3226;background:#12141acc;margin:2px 0;border-radius:3px}.wmrow.here{border-color:#ffd86a;background:#2a2212cc}.wmrow.unk{color:#6a6458}.wmrow .lv{color:#8a8478;white-space:nowrap}.wmrow .lv.fit{color:#7ae85a}
 #achBody .achtabs{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px}.achlist{display:flex;flex-direction:column;gap:3px}.achrow{display:flex;flex-direction:column;padding:5px 8px;border:1px solid #3a3226;background:#12141acc;border-radius:4px;cursor:default}.achrow b{font-weight:600;color:#cfc6b8}.achrow span{font-size:13px;color:#8a8478}.achrow.done{border-color:#8a6a2a;background:#2a2212cc}.achrow.done b{color:#ffd86a}
 .tbtns .sk{position:relative;overflow:hidden;background-size:70% 70%;background-position:center;background-repeat:no-repeat}.tbtns .sk b{position:absolute;right:4px;bottom:2px;font-size:11px;text-shadow:0 0 3px #000,0 0 2px #000}.tbtns .sk .cd{position:absolute;left:0;right:0;bottom:0;height:0;background:#000a;pointer-events:none}.tbtns .sk.lock{filter:grayscale(1) brightness(.5)}.tbtns .sk.nomana{box-shadow:inset 0 0 0 2px #3a6ae8}.tbtns .use{background:#1e3a2acc}.tbtns .atk{grid-column:span 2;width:auto!important;border-radius:30px!important;background:#5a2a1ecc}
 .tmenu{position:absolute;right:calc(14px + env(safe-area-inset-right,0px));top:calc(232px + env(safe-area-inset-top,0px));display:flex;flex-direction:column;gap:6px;pointer-events:auto}.tmenu button{min-width:52px;height:34px;border-radius:8px;background:#141a24cc;border:2px solid var(--edge);color:#ffe8b8;font:600 13px var(--f-ui);touch-action:none}
@@ -145,7 +146,7 @@ body.touch.chaton #chat{display:block!important;bottom:auto;top:calc(150px + env
   <canvas id="portrait" width="64" height="64"></canvas>
   <div class="who"><b id="cName">—</b><span id="cLv"></span></div>
   <div class="bars"><div class="bar hp"><i id="hpB"></i><span id="hpT"></span></div><div class="bar mp"><i id="mpB"></i><span id="mpT"></span></div></div>
-  <div class="menu"><button class="btn" id="bInv" type="button">Itens (I)</button><button class="btn" id="bChar" type="button">Personagem (C)<span id="ptsBadge" hidden></span></button><button class="btn" id="bQuest" type="button">Missões (J)</button><button class="btn" id="bAch" type="button">Conquistas (K)</button><button class="btn" id="bHelp" type="button">Ajuda (H)</button><button class="btn" id="bSnd" type="button">Som</button><button class="btn" id="bMenu" type="button" title="Salvar e voltar à tela de criação de personagem">Menu</button><span class="gold" id="hudGold">0</span></div>
+  <div class="menu"><button class="btn" id="bInv" type="button">Itens (I)</button><button class="btn" id="bChar" type="button">Personagem (C)<span id="ptsBadge" hidden></span></button><button class="btn" id="bQuest" type="button">Missões (J)</button><button class="btn" id="bAch" type="button">Conquistas (K)</button><button class="btn" id="bWorld" type="button">Mapa (M)</button><button class="btn" id="bHelp" type="button">Ajuda (H)</button><button class="btn" id="bSnd" type="button">Som</button><button class="btn" id="bMenu" type="button" title="Salvar e voltar à tela de criação de personagem">Menu</button><span class="gold" id="hudGold">0</span></div>
 </div>
 <div id="partyBox" class="win" hidden></div><div id="partyInv" class="win" hidden><span id="piTxt"></span><div class="pib"><button class="btn pri" id="piYes" type="button">Aceitar</button><button class="btn" id="piNo" type="button">Recusar</button></div></div>
 <div id="mapbox" class="win" hidden><div class="tb"><span id="regName">Pedravale</span><span id="regLv" data-dg="0"></span></div><canvas id="mini"></canvas><div id="clock"></div><div id="netInfo" hidden></div></div>
@@ -171,11 +172,12 @@ body.touch.chaton #chat{display:block!important;bottom:auto;top:calc(150px + env
   <div class="body"><div class="grid" id="bankGrid"></div><div class="bankfoot"><span>Ouro guardado <b id="bankGold">0</b></span><button class="btn sm" id="bDep" type="button">Depositar 100</button><button class="btn sm" id="bDepAll" type="button">Depositar tudo</button><button class="btn sm" id="bWd" type="button">Sacar 100</button><button class="btn sm" id="bWdAll" type="button">Sacar tudo</button></div><p class="hint">Clique nos itens do inventário para guardar e nos do cofre para retirar.</p></div></div>
 <div id="dlg" class="win modal" hidden><div class="tb"><span id="dlgName"></span><button class="x" data-close type="button" aria-label="Fechar">x</button></div><div class="body" id="dlgText"></div><div class="acts" id="dlgActs"></div></div>
 <div id="comboBox" hidden><div class="n"></div><div class="b"></div><div class="tm"><i class="t"></i></div><div class="fury" hidden><span>Fúria</span><div><i></i></div></div></div>
+<div id="worldWin" class="win modal" hidden><div class="tb"><span>Mapa do mundo</span><button class="x" data-close type="button" aria-label="Fechar">x</button></div><div class="body" id="worldBody"></div></div>
 <div id="achWin" class="win modal" hidden><div class="tb"><span>Conquistas e ranking</span><button class="x" data-close type="button" aria-label="Fechar">x</button></div><div class="body" id="achBody"></div></div>
 <div id="helpWin" class="win modal" hidden><div class="tb"><span>Como jogar</span><button class="x" data-close type="button" aria-label="Fechar">x</button></div>
   <div class="body"><div class="keys">
     <kbd>W A S D</kbd><span>andar</span><kbd>Mouse</kbd><span>mirar · clique (ou segure) para atacar</span><kbd>Espaço</kbd><span>dash com invencibilidade curta</span><kbd>Q E R T</kbd><span>habilidades da classe (liberam nos níveis 1, 3, 5 e 8)</span>
-    <kbd>1 2 3 4</kbd><span>poções e Pergaminho de Retorno</span><kbd>F</kbd><span>falar, abrir, examinar, entrar · minerar veios brilhantes · pescar perto da água (F de novo no "!")</span><kbd>K</kbd><span>conquistas, títulos, profissões e ranking online</span><kbd>I · C · J</kbd><span>inventário · personagem · missões</span><kbd>Enter</kbd><span>chat · /grupo Nome convida para grupo · /g fala com o grupo · /sair</span><kbd>Roda · + −</kbd><span>zoom</span><kbd>P</kbd><span>acabamento pixelado: desligado, suave ou completo</span><kbd>G</kbd><span>habilidade definitiva (após a evolução no nível 15)</span></div>
+    <kbd>1 2 3 4</kbd><span>poções e Pergaminho de Retorno</span><kbd>F</kbd><span>falar, abrir, examinar, entrar · minerar veios brilhantes · pescar perto da água (F de novo no "!")</span><kbd>M</kbd><span>mapa do mundo com níveis de cada área</span><kbd>K</kbd><span>conquistas, títulos, profissões e ranking online</span><kbd>I · C · J</kbd><span>inventário · personagem · missões</span><kbd>Enter</kbd><span>chat · /grupo Nome convida para grupo · /g fala com o grupo · /sair</span><kbd>Roda · + −</kbd><span>zoom</span><kbd>P</kbd><span>acabamento pixelado: desligado, suave ou completo</span><kbd>G</kbd><span>habilidade definitiva (após a evolução no nível 15)</span></div>
     <p class="hint">Áreas vermelhas no chão avisam um ataque: saia delas ou use o dash. Nada é obrigatório: cace, explore, fale com os moradores. Os outros aventureiros desta versão são simulados e o progresso fica salvo neste navegador.</p></div></div>
 <div id="sndWin" class="win modal" hidden><div class="tb"><span>Som</span><button class="x" data-close type="button" aria-label="Fechar">x</button></div>
   <div class="body"><div class="vols"><label for="vol_music">Música</label><input id="vol_music" type="range" min="0" max="100"><label for="vol_amb">Ambiente</label><input id="vol_amb" type="range" min="0" max="100"><label for="vol_sfx">Efeitos</label><input id="vol_sfx" type="range" min="0" max="100"></div>
@@ -641,6 +643,38 @@ function rqTalk(n){const nm=n.n;const list=n.quests||[];
 // Items that never appear in a shop are stronger: +30% attack/defence.
 {const sold=new Set();for(const k in SHOP)for(const id of SHOP[k])sold.add(id);for(const id in BASES){const b=BASES[id];if(b.t!=='eq'||sold.has(id))continue;b.dropOnly=1;if(b.atk)b.atk=Math.round(b.atk*1.3);if(b.def)b.def=Math.max(1,Math.round(b.def*1.3))}
   for(const id of ['gorro_pele','manto_pele','machado_nordico','arco_osso','adaga_gelo','kasa','kimono','katana','yumi','tanto','turbante','tunica_areia','cimitarra','arco_composto','cajado_sol','khanjar','colete_cobra','machete','cajado_raiz','zarabatana'])if(!DROP_POOL.includes(id))DROP_POOL.push(id)}
+
+// ===================== gear tiers 20 → 60 (one full set per class every 5 levels) =====================
+const GEAR_TIERS=[
+  {lv:20,key:'gl',adj:'Glacial',reg:'gelvar',c1:0xbfe0f0,c2:0x5a8ab0,el:'frost'},
+  {lv:25,key:'mm',adj:'de Mamute',reg:'gelvar',c1:0x8a6a4a,c2:0xe8dcc0,el:null},
+  {lv:30,key:'sm',adj:'Samurai',reg:'kazemura',c1:0x8a2a2a,c2:0x1a1a22,el:null},
+  {lv:35,key:'on',adj:'Oni',reg:'kazemura',c1:0x5a1a2a,c2:0xd8402a,el:'fire'},
+  {lv:40,key:'su',adj:'do Sultão',reg:'qasr',c1:0xe8d8b0,c2:0xc8a040,el:null},
+  {lv:45,key:'so',adj:'Solar',reg:'qasr',c1:0xffd06a,c2:0xd86a1a,el:'fire'},
+  {lv:50,key:'an',adj:'Ancestral',reg:'aldeia',c1:0x3a6a3a,c2:0xd8c890,el:'poison'},
+  {lv:55,key:'fr',adj:'da Fera Rubra',reg:'aldeia',c1:0x8a1a1a,c2:0x2a1a14,el:null},
+  {lv:60,key:'dr',adj:'do Dragão',reg:null,c1:0x2a6a5a,c2:0xffd86a,el:'storm'}];
+const GEAR_SETS={
+  g:[['arma','Espada',{wt:'sword',as:.95,k:2.5,b:6,ic:'sword'}],['arma','Espadão',{wt:'greatsword',two:1,as:.62,k:4.6,b:8,ic:'sword',odd:1}],['escudo','Escudo',{sh:'kite',d:.9,ic:'shield'}],['cabeca','Elmo',{hd:['bascinet','winged','plumed','greathelm','kabuto'],d:1.1,ic:'greathelm'}],['peito','Armadura',{ct:'plate',d:2.1,b:6,ic:'plate'}],['pernas','Grevas',{d:.9,ic:'legs'}],['pes','Botas de Placa',{d:.5,ic:'boots'}],['maos','Manoplas',{d:.45,ic:'gloves'}]],
+  a:[['arma','Arco',{wt:'bow',as:1.05,k:2.45,b:6,ic:'bow'}],['arma','Besta',{wt:'crossbow',as:.5,k:3.7,b:8,pierce:2,ic:'crossbow',odd:1}],['escudo','Aljava',{sh:'quiver',fixK:[['dmg',.25]],ic:'quiver'}],['cabeca','Capuz',{hd:['hood','coif','hood','furhat','hood'],d:.7,ic:'hood'}],['peito','Gibão',{ct:'leather',d:1.4,b:4,ic:'chest'}],['pernas','Perneiras',{d:.7,ic:'legs'}],['pes','Botas',{d:.45,fixK:[['speed',.12]],ic:'boots'}],['maos','Braçadeiras',{d:.4,fixK:[['crit',.08]],ic:'gloves'}]],
+  m:[['arma','Cajado',{wt:'staff',as:.9,k:2.35,b:6,ic:'staff'}],['arma','Cetro',{wt:'wand',as:1.1,k:1.9,b:5,ic:'wand',odd:1}],['escudo','Tomo',{sh:'tome',fixK:[['mp',2],['skill',.25]],ic:'tome'}],['cabeca','Chapéu',{hd:['hat','crown','hat','turban','crown'],d:.5,fixK:[['int',.12]],ic:'hat'}],['peito','Manto',{ct:'robe',d:.9,b:2,fixK:[['mp',1.6]],ic:'robe'}],['pernas','Calças Bordadas',{d:.5,ic:'legs'}],['pes','Sandálias',{d:.4,fixK:[['mp',.8]],ic:'boots'}],['maos','Luvas Rúnicas',{d:.35,fixK:[['skill',.15]],ic:'gloves'}]],
+  l:[['arma','Adaga',{wt:'dagger',as:1.25,k:2.05,b:6,ic:'dagger'}],['arma','Foice',{wt:'scythe',two:1,as:.78,k:3.6,b:8,ic:'scythe',odd:1}],['escudo','Adaga Secundária',{sh:'dagger',fixK:[['crit',.1]],ic:'dagger'}],['cabeca','Máscara',{hd:['assassin','assassin','wraps','assassin','assassin'],d:.6,ic:'hood'}],['peito','Couraça',{ct:'leather',d:1.25,b:4,ic:'chest'}],['pernas','Calças Sombrias',{d:.6,ic:'legs'}],['pes','Botas Silenciosas',{d:.45,fixK:[['speed',.1]],ic:'boots'}],['maos','Luvas de Lâmina',{d:.4,fixK:[['crit',.1]],ic:'gloves'}]]};
+const GEAR_ACC=[['anel','Anel',[['for',.12],['des',.12]],'ring'],['anel','Selo',[['int',.12],['skill',.2]],'ring'],['colar','Amuleto',[['hp',3],['def',.3]],'amulet'],['colar','Pingente',[['dmg',.2],['crit',.08]],'amulet']];
+const GEAR_SHOP={};
+(function buildGear(){GEAR_TIERS.forEach((T,ti)=>{const L=T.lv,price=Math.round(55*Math.pow(L,1.55)/10)*10;
+  for(const cls in GEAR_SETS)for(const [slot,base,o] of GEAR_SETS[cls]){if(o.odd&&ti%2===0&&L<60)continue;if(!o.odd&&slot==='arma'&&ti%2===1&&L<60)continue;
+    const id=`g${L}_${cls}_${slot}${o.odd?'2':''}`,b={n:`${base} ${T.adj}`,t:'eq',slot,lv:L,buy:price*(slot==='arma'?2:slot==='peito'?1.6:1),ic:[o.ic,T.c1,T.c2]};
+    if(slot!=='pernas'&&slot!=='pes'&&slot!=='maos'||cls)b.cls=cls;if(slot==='pernas'||slot==='pes'||slot==='maos')delete b.cls;
+    if(o.wt){b.wt=o.wt;b.atk=Math.round(o.k*L+o.b);b.as=o.as;if(o.two)b.two=1;if(o.pierce)b.pierce=o.pierce;if(o.wt==='staff'||o.wt==='wand')b.orb=T.c2;if(T.el==='fire'&&cls==='g')b.fire=1;if(T.el==='frost'&&cls==='g')b.frost=1;if(T.el==='storm'&&cls==='g')b.storm=1}
+    if(o.d)b.def=Math.round(o.d*L+(o.b||0));if(o.sh){b.sh=o.sh;b.col=T.c1}if(o.hd){b.hd=o.hd[ti%o.hd.length];b.col=T.c1;b.col2=T.c2}if(o.ct){b.ct=o.ct;b.col=T.c1;b.trim=T.c2}if(slot==='pernas'||slot==='pes'||slot==='maos')b.col=T.c1;
+    if(o.sh==='quiver'&&T.el)b.arrow=T.el==='storm'?'frost':T.el;
+    const fx=(o.fixK||[]).map(([a,k])=>[a,Math.max(1,Math.round(k*L))]);if(slot==='arma'||slot==='peito')fx.push([cls==='m'?'int':cls==='g'?'for':'des',Math.round(L/8)]);if(fx.length)b.fix=fx;
+    if(L>=60){b.dropOnly=1;if(b.atk)b.atk=Math.round(b.atk*1.3);if(b.def)b.def=Math.round(b.def*1.3);b.lore='Forjado com escamas de dragão. Só cai dos chefes mais fortes.'}
+    BASES[id]=b;if(T.reg&&(slot==='arma'||slot==='escudo'||slot==='peito'||slot==='cabeca'))(GEAR_SHOP[T.reg]=GEAR_SHOP[T.reg]||[]).push(id)}
+  for(const [slot,base,fix,ic] of GEAR_ACC){const id=`g${L}_${slot}_${base}`;BASES[id]={n:`${base} ${T.adj}`,t:'eq',slot,lv:L,buy:price,fix:fix.map(([a,k])=>[a,Math.max(1,Math.round(k*L))]),ic:[ic,T.c1,T.c2]}}});
+  for(const k in BASES){const b=BASES[k];if(b.t==='eq'&&/^g\d\d_/.test(k)&&!DROP_POOL.includes(k))DROP_POOL.push(k)}
+  for(const reg in GEAR_SHOP)if(SHOP[reg])SHOP[reg]=SHOP[reg].concat(GEAR_SHOP[reg].filter(id=>!SHOP[reg].includes(id)))})();
 
 // ===================== procedural art: props, buildings, nature, icons =====================
 function inPoly(px,py,pts){let ins=false;for(let i=0,j=pts.length-1;i<pts.length;j=i++){const xi=pts[i][0],yi=pts[i][1],xj=pts[j][0],yj=pts[j][1];if(((yi>py)!==(yj>py))&&(px<(xj-xi)*(py-yi)/(yj-yi)+xi))ins=!ins}return ins}
@@ -1871,6 +1905,96 @@ function decorateWorld(ART){const m=MAPS.world;const free=(x,y)=>inb(m,x,y)&&!m.
     {id:'lenhador',n:'Lenhador Ivo',x:36.5,y:29.6,look:{skin:SK[2],hair:0x2a1e18,hs:'short',beard:1,chest:0x6a3a2a,ct:'leather',legs:0x4a3a2a,boots:0x3a2a1a,wt:'axe',wcol:0xb8c0cc},role:'talker',lines:['O Bosque de Vellmor esconde coisas. Um círculo de pedras, por exemplo.','Ouvi lobos a noite toda. Tem um alfa por aí.','As árvores mais velhas do bosque têm nome. Eu só não sei qual.']},
     {id:'patrulheiro',n:'Patrulheiro Dario',x:46.6,y:21.4,look:{skin:SK[0],hair:0x3a2a22,hs:'short',chest:0x8a909a,ct:'chain',legs:0x4a4a5a,boots:0x2a2a30,hd:'helm',hdCol:0x9098a4,wt:'spear',wcol:0x8a8a98,sh:'kite',shCol:0x2e4a8a},role:'talker',lines:['Depois da ponte começa o território goblin. Vá preparado.','O forte goblin fica no leste. Tambores toda noite.','Os goblins arqueiros sempre ficam atrás dos guerreiros. Mire neles primeiro.']})}
 
+// ===================== world progression 1→60: level offsets, connecting fields, multi-floor dungeons =====================
+const LVOFF={gelo:12,gruta_gelo:12,caverna_mamute:12,japao:22,caverna_oni:22,santuario_kyubi:22,deserto:32,tumba:32,piramide_akhet:32,selva:40,templo_selva:40,piramide_sol:40};
+const FIELDS=[
+  {id:'f_gelo',spec:'gelo',name:'Encosta Gelada',off:6,from:'world',to:'gelo',seed:9101},
+  {id:'f_japao',spec:'japao',name:'Trilha dos Mil Toriis',off:16,from:'gelo',to:'japao',seed:9202},
+  {id:'f_deserto',spec:'deserto',name:'Estrada das Caravanas',off:26,from:'japao',to:'deserto',seed:9303},
+  {id:'f_selva',spec:'selva',name:'Rio das Serpentes',off:36,from:'deserto',to:'selva',seed:9404}];
+const FLOORS={gruta_gelo:['B','C'],caverna_oni:['B','C'],tumba:['C','B'],templo_selva:['B','C']};
+const shiftLv=(s,off)=>off?String(s).replace(/\d+/g,n=>String(+n+off)):s;
+function freeNear(m,x0,y0,r=10){for(let rr=0;rr<=r;rr+=.5)for(let i=0;i<24;i++){const a=i/24*6.283,x=Math.floor(x0+Math.cos(a)*rr),y=Math.floor(y0+Math.sin(a)*rr);if(!inb(m,x,y)||m.solid[y*m.w+x]||tAt(m,x,y)===WATER)continue;if(m.objs.some(o=>Math.abs(o.x-x-.5)<1&&Math.abs(o.y-y-.5)<1))continue;return[x,y]}return[Math.floor(x0),Math.floor(y0)]}
+function warpAt(ART,m,x0,y0,to,at,label){const [x,y]=freeNear(m,x0,y0);for(const [dx,dy] of [[0,0],[1,0],[-1,0],[0,1],[0,-1]])if(inb(m,x+dx,y+dy)&&!m.objs.some(o=>o.wall&&Math.floor(o.x)===x+dx&&Math.floor(o.y)===y+dy))m.solid[(y+dy)*m.w+x+dx]=0;
+  addObj(m,{x:x+.5,y:y+.5,k:x+y+1,cv:ART.portalBase.cv,ox:ART.portalBase.ox,oy:ART.portalBase.oy,portal:1,keep:1,warp:1,light:{dx:0,dy:-28,r:110,cold:1}});
+  m.acts.push({kind:'enter',to,at,x:x+.5,y:y+.5,label,warp:1,auto:1});return[x+.5,y+.5]}
+// ---------- connecting field (72×72, no city) ----------
+function genField(ART,S,F){const N=72,m=makeMap(F.id,N,N,{name:F.name,dark:0,bg:S.bg,climate:S.climate,mood:S.mood,gradeTint:S.gradeTint,oSoft:S.oSoft});const R=mulberry(F.seed);
+  const T=(x,y,t)=>{if(inb(m,x,y))m.terr[y*N+x]=t},G=(x,y)=>tAt(m,x,y),sc=55/N;
+  for(let y=0;y<N;y++)for(let x=0;x<N;x++){const sx=Math.floor(x*sc),sy=Math.floor(y*sc);T(x,y,S.ground(Math.min(52,Math.max(3,sx)),Math.min(52,Math.max(3,sy)),R))}
+  if(S.id==='gelo')for(let y=0;y<N;y++)for(let x=0;x<N;x++)if(G(x,y)===ICE&&vn(x*.09,y*.09,95)<.62)T(x,y,SNOW);
+  const pond=S.id==='gelo'?ICE:WATER;for(let k=0;k<4;k++){const cx=10+R()*52,cy=8+R()*56;if(Math.abs(cy-36)<7)continue;const rr=2.5+R()*3;for(let y=Math.floor(cy-rr-2);y<=cy+rr+2;y++)for(let x=Math.floor(cx-rr-2);x<=cx+rr+2;x++)if(Math.hypot((x-cx)*1.1,y-cy)<rr+vn(x*.4,y*.4,k+90)*1.6)T(x,y,pond)}
+  let yy=36;const path=[];for(let x=0;x<N;x++){yy+=Math.sin(x*.16+F.seed)*.55+(R()-.5)*.5;yy=Math.max(10,Math.min(N-11,yy));path.push([x,Math.round(yy)]);for(let d=-1;d<=1;d++){const t=G(x,Math.round(yy)+d);T(x,Math.round(yy)+d,t===WATER?BRIDGE:S.road)}}
+  const side=(x0,yA,yB)=>{for(let y=Math.min(yA,yB);y<=Math.max(yA,yB);y++){const t=G(x0,y);T(x0,y,t===WATER?BRIDGE:S.road);T(x0+1,y,G(x0+1,y)===WATER?BRIDGE:S.road)}};side(24,path[24][1],12);side(48,path[48][1],60);
+  for(let i=0;i<N*N;i++)if(SOLID_T[m.terr[i]])m.solid[i]=1;for(let y=0;y<N;y++)for(let x=0;x<N;x++)if(m.terr[y*N+x]===WATER)m.waterTiles.push([x,y]);
+  const reserve=new Set(),res=(x,y)=>reserve.add(x+','+y),isRes=(x,y)=>reserve.has(x+','+y),P=(x,y,a,ex)=>{res(x,y);return prop(m,x,y,a,ex)};
+  for(const [x,y] of path)for(let d=-2;d<=2;d++)res(x,y+d);for(let y=0;y<N;y++){res(24,y);res(25,y);res(48,y);res(49,y)}
+  // camps
+  for(const [cx,cy,i] of [[18,path[18][1]-6,0],[38,path[38][1]+6,1],[58,path[58][1]-6,2],[30,14,3],[52,58,4]]){let ok=true;for(let y=cy-2;y<=cy+2;y++)for(let x=cx-2;x<=cx+2;x++)if(!inb(m,x,y)||m.solid[y*N+x]||G(x,y)===WATER)ok=false;if(!ok)continue;for(let y=cy-2;y<=cy+2;y++)for(let x=cx-2;x<=cx+2;x++)res(x,y);
+    prop(m,cx,cy,ART.campfire,{fire:{dx:0,dy:-4,s:5},light:{dx:0,dy:-8,r:160}});prop(m,cx+1,cy-1,ART.log,{block:null});addObj(m,{x:cx-.8,y:cy+1.2,k:cx+cy+.4,cv:ART.bedroll[i%2].cv,ox:ART.bedroll[i%2].ox,oy:ART.bedroll[i%2].oy});if(i%2){const t=ART.tent[i%3];addObj(m,{x:cx+1,y:cy+1,k:cx+cy+4,cv:t.cv,ox:t.ox,oy:t.oy,block:[[cx+1,cy+1],[cx+2,cy+1],[cx+1,cy+2],[cx+2,cy+2]],tall:1})}else prop(m,cx-1,cy-1,ART.crate)}
+  // lights along the road
+  for(let x=6;x<N-4;x+=7){const [px,py]=path[x],sy=py+((x/7)&1?-3:3);if(inb(m,x,sy)&&!m.solid[sy*N+x]&&G(x,sy)!==WATER&&!isRes(x,sy))P(x,sy,S.lamp&&x%14===6?S.lamp.art:ART.torchpost,S.lamp&&x%14===6?S.lamp.ex:{fire:{dx:0,dy:-50,s:2},light:{dx:0,dy:-46,r:120}})}
+  // decals
+  if(S.decal)for(let y=0;y<N;y++)for(let x=0;x<N;x++){const t=G(x,y);const r=R(),d=S.decal(t,r,R);if(d){const [wx,wy]=wpx(x+R(),y+R());decal(m,wx,wy,d)}}
+  // nature
+  for(let y=0;y<N;y++)for(let x=0;x<N;x++){const t=G(x,y);if(isRes(x,y)||m.solid[y*N+x])continue;if(t===S.road||t===BRIDGE||t===WATER)continue;const near=[[1,0],[-1,0],[0,1],[0,-1]].some(([dx,dy])=>{const tt=G(x+dx,y+dy);return tt===S.road||tt===BRIDGE});const border=x<2||y<2||x>N-3||y>N-3;
+    const pick=S.flora(t,R()*1.12,border,near,x,y,R);if(pick){const [art,tall,ex]=pick;prop(m,x,y,art,Object.assign({tall},ex||{}))}}
+  // creatures: easier near the entrance, harder deeper in
+  const M6=S.mobs;m.lvOff=F.off;
+  m.regions=[{n:F.name+' — Entrada',r:[0,0,35,71],lv:`Níveis ${F.off+2}–${F.off+8}`,dg:2},{n:F.name+' — Interior',r:[36,0,71,71],lv:`Níveis ${F.off+6}–${F.off+12}`,dg:3},{n:F.name,r:[0,0,71,71],lv:`Níveis ${F.off+2}–${F.off+12}`,dg:2}];
+  m.spawns=[[M6[0],[4,4,34,30],6],[M6[1],[4,42,34,67],5],[M6[2],[8,8,34,67],4],[M6[3],[38,4,66,30],4],[M6[4],[38,42,66,67],5],[M6[2],[40,8,66,67],3],[M6[1],[38,4,66,67],3],[M6[5],[52,10,66,26],1]];
+  m.spawnPt=[3.5,path[3][1]+.5];m.npcDefs=[];m.fieldPath=path;
+  {const [x,y]=freeNear(m,36,path[36][1]+2);m.npcDefs.push({id:F.id+'_mascate',n:'Mascate Viajante',x:x+.5,y:y+.5,look:Object.assign({},S.people.shop[1],{chest:tone(S.people.shop[1].chest||0x6a4a2a,-.1)}),role:'rshop',shop:S.shop})}
+  return m}
+// ---------- extra dungeon floors ----------
+function genFloors(ART){const cs=caveSpecs(ART);
+  for(const cave in FLOORS){const base=cs[cave];if(!base||!MAPS[cave])continue;let prev=MAPS[cave];const lays=FLOORS[cave];
+    for(let f=2;f<=3;f++){const id=cave+'_'+f,LY=LAYOUTS[prev.layoutK||base.layout||'A'];
+      const sp=freeNear(prev,LY.boss[0]+2.5,LY.boss[1]-2.5,6);prop(prev,sp[0],sp[1],ART.stairs,{block:null,light:{dx:0,dy:-20,r:120,cold:1}});prev.acts.push({kind:'enter',to:id,at:[6.5,7.2],x:sp[0]+.5,y:sp[1]+.5,label:`Descer ao ${f}º andar`});
+      const S=Object.assign({},base,{id,name:`${base.name} — ${f}º andar`,layout:lays[f-2],seed:base.seed+f*97,parent:prev.id,out:[sp[0]+.5,sp[1]+1.6],lv:`Níveis ${10+f*3}–${16+f*3}`,dg:4,
+        mobs:[base.mobs[f===2?1:2],base.mobs[0],base.mobs[f===2?2:1]],boss:f===3?base.boss+'_anc':base.mobs[2]});
+      const m=genCaveR(ART,S);m.layoutK=lays[f-2];m.lvOff=(LVOFF[cave]||0)+(f===2?4:8);if(f===2){m.boss=null;m.spawns.push([base.mobs[2],LAYOUTS[lays[0]].rects[4],3])}MAPS[id]=m;if(f===3)addBossChest(m,ART);prev=m}}}
+// ancestral bosses for the third floors
+for(const b of ['rainha_gelo','oni_shogun','farao','boitata_rei'])if(MOBS[b])MOBS[b+'_anc']=Object.assign({},MOBS[b],{n:MOBS[b].n+' Ancestral',hp:Math.round(MOBS[b].hp*1.9),atk:Math.round(MOBS[b].atk*1.25),exp:Math.round(MOBS[b].exp*2.2),gold:[MOBS[b].gold[0]*2,MOBS[b].gold[1]*2],drops:(MOBS[b].drops||[]).concat([['g60_anel_Anel',.25],['g60_colar_Pingente',.25]])});
+// ---------- build everything ----------
+function genWorld2(ART){const rs=regionSpecs(ART);
+  for(const F of FIELDS)MAPS[F.id]=genField(ART,rs[F.spec],F);
+  genFloors(ART);
+  for(const id in LVOFF)if(MAPS[id]){MAPS[id].lvOff=LVOFF[id];for(const r of MAPS[id].regions||[])r.lv=shiftLv(r.lv,LVOFF[id])}
+  for(const id in MAPS){const m=MAPS[id];if(/_[23]$/.test(id))for(const r of m.regions)r.lv=shiftLv(`Níveis ${10+(id.endsWith('3')?6:3)}–${16+(id.endsWith('3')?6:3)}`,LVOFF[id.replace(/_[23]$/,'')]||0)}
+  // link the chain: previous map → field (west) ... field (east) → next region
+  for(const F of FIELDS){const fm=MAPS[F.id],from=MAPS[F.from],to=MAPS[F.to],path=fm.fieldPath;
+    const fromPt=F.from==='world'?[44,2]:[28.5,2.2],toPt=[28.5,53.4];
+    const a=warpAt(ART,from,fromPt[0],fromPt[1],F.id,[4.5,path[4][1]+.5],`${fm.name} (Nv ${F.off+2}–${F.off+12})`);
+    warpAt(ART,fm,1.5,path[1][1],F.from,[a[0],a[1]+1.6],`Voltar: ${from.name}`);
+    const b=warpAt(ART,to,toPt[0],toPt[1],F.id,[66.5,path[66][1]+.5],`${fm.name} (Nv ${F.off+2}–${F.off+12})`);
+    warpAt(ART,fm,69.5,path[69][1],F.to,[b[0],b[1]-1.6],`Seguir para ${to.name}`)}}
+// ---------- mob scaling by map ----------
+const atkP=L=>26+4.9*L,hpP=L=>144+23.6*L;
+function scaledKind(kind,off){const k=kind+'@'+off;if(MOBS[k])return k;const d=MOBS[kind],l=d.lv||1,L=l+off;
+  MOBS[k]=Object.assign({},d,{lv:L,hp:Math.round(d.hp*atkP(L)/atkP(l)*(1+off*.006)),atk:Math.round(d.atk*hpP(L)/hpP(l)*(1+off*.01)),def:Math.round((d.def||0)*(1+off*.05)),exp:Math.round(d.exp*Math.pow(need(L)/need(l),.8)),gold:[Math.round(d.gold[0]*(1+off*.09)),Math.round(d.gold[1]*(1+off*.09))]});return k}
+{const _sm=spawnMob;spawnMob=function(kind,m,rect,at){const off=m&&m.lvOff||0;if(!off||!MOBS[kind]||kind==='boneco')return _sm(kind,m,rect,at);const e=_sm(scaledKind(kind,off),m,rect,at);if(e)e.kind=kind;return e}}
+// ---------- warp on step (classic MMORPG portals) ----------
+function warpTick(dt){if(!P||P.dead||state!=='play')return;if(!(P.flags.seen&&P.flags.seen[M.id]))markSeen(M.id);if(P.warpCD>0){P.warpCD-=dt;return}for(const a of M.acts)if(a.auto&&Math.hypot(a.x-P.x,a.y-P.y)<.75){P.warpCD=1.2;burstAt(P.x,P.y,0x9ad8ff,26,70);sfx('blink');changeMap(a.to,a.at[0],a.at[1]);burstAt(P.x,P.y,0xbfe8ff,26,70);P.warpCD=1.4;log(`Você chegou em ${M.name}.`,'sys');return}}
+// ---------- world map (M) ----------
+const WORLD_GRAPH=[
+  {n:'Pedravale',maps:[['world','Vila de Pedravale e arredores','1–11'],['dungeon','Toca dos Goblins','7–12'],['forte','Forte Goblin','10–15'],['cripta','Cripta','8–14']]},
+  {n:'Rumo ao Norte',maps:[['f_gelo','Encosta Gelada','8–18']]},
+  {n:'Gelvar',maps:[['gelo','Picos de Gelvar','13–24'],['gruta_gelo','Gruta Congelada (1º andar)','20–26'],['gruta_gelo_2','Gruta Congelada (2º andar)','25–31'],['gruta_gelo_3','Gruta Congelada (3º andar)','28–34'],['caverna_mamute','Caverna do Mamute (secreta)','24–28']]},
+  {n:'Rumo ao Leste',maps:[['f_japao','Trilha dos Mil Toriis','18–28']]},
+  {n:'Kazemura',maps:[['japao','Vale de Kazemura','23–34'],['caverna_oni','Caverna do Oni (1º andar)','30–36'],['caverna_oni_2','Caverna do Oni (2º andar)','35–41'],['caverna_oni_3','Caverna do Oni (3º andar)','38–44'],['santuario_kyubi','Santuário da Kyūbi (secreto)','34–38']]},
+  {n:'Rumo ao Sul',maps:[['f_deserto','Estrada das Caravanas','28–38']]},
+  {n:'Qasr',maps:[['deserto','Dunas de Al-Rimal','33–44'],['tumba','Tumba do Faraó (1º andar)','40–46'],['tumba_2','Tumba do Faraó (2º andar)','45–51'],['tumba_3','Tumba do Faraó (3º andar)','48–54'],['piramide_akhet','Pirâmide de Akhet','45–50']]},
+  {n:'Rumo à Selva',maps:[['f_selva','Rio das Serpentes','38–48']]},
+  {n:'Aldeia',maps:[['selva','Selva da Aldeia','41–52'],['templo_selva','Templo Perdido (1º andar)','48–54'],['templo_selva_2','Templo Perdido (2º andar)','53–59'],['templo_selva_3','Templo Perdido (3º andar)','56–62'],['piramide_sol','Pirâmide do Sol Verde','53–58']]}];
+function markSeen(id){if(!P)return;P.flags.seen=P.flags.seen||{};P.flags.seen[id]=1}
+function renderWorldMap(){const body=$('#worldBody');if(!body)return;body.textContent='';const seen=(P.flags&&P.flags.seen)||{};
+  const hint=document.createElement('p');hint.className='hint';hint.textContent='Siga os portais nas bordas dos mapas: cada região leva à próxima. A Guardiã do Portal de cada cidade também teleporta entre as cidades.';body.appendChild(hint);
+  for(const g of WORLD_GRAPH){const sec=document.createElement('div');sec.className='wmsec';const h=document.createElement('b');h.textContent=g.n;sec.appendChild(h);
+    for(const [id,n,lv] of g.maps){const row=document.createElement('div');row.className='wmrow'+(M&&M.id===id?' here':'')+(seen[id]||M.id===id?'':' unk');const a=document.createElement('span');a.textContent=(M&&M.id===id?'► ':'')+(seen[id]||M.id===id?n:'??? (não descoberto)');const c=document.createElement('span');c.className='lv';c.textContent='Nv '+lv;const fit=lv.split('–').map(Number);if(P.lv>=fit[0]-2&&P.lv<=fit[1])c.classList.add('fit');row.appendChild(a);row.appendChild(c);sec.appendChild(row)}
+    body.appendChild(sec)}}
+function toggleWorldMap(){const w=$('#worldWin');if(!w)return;if(w.hidden){renderWorldMap();showWin('#worldWin')}else hideWin('#worldWin')}
+
 // ===================== game state & simulation =====================
 let ART,LS,MAPS={},M=null,P=null,T=0,TIME=.71,state='intro',uid=1,hitstop=0,shake=0,bossActive=null;
 const mobs=[],bots=[],npcs=[],loots=[],projs=[],teles=[],fx=[],texts=[],traps=[],respawnQ=[],timers=[];
@@ -2152,7 +2276,7 @@ function interact(it){if(!it||P.dead)return;const e=it.e;
   if(it.kind==='bchest'){openBossChest(e);return}
   if(it.kind==='cave'){changeMap('dungeon',MAPS.dungeon.spawnPt[0],MAPS.dungeon.spawnPt[1]);return}
   if(it.kind==='exit'){const to=e.to||'world',at=e.at||MAPS.world.caveOut;changeMap(to,at[0],at[1]);return}
-  if(it.kind==='enter'){changeMap(e.to,MAPS[e.to].spawnPt[0],MAPS[e.to].spawnPt[1]);if(e.msg)log(e.msg,'sys');return}
+  if(it.kind==='enter'){const at=e.at||MAPS[e.to].spawnPt;if(e.warp){burstAt(P.x,P.y,0x9ad8ff,26,70);sfx('blink');P.warpCD=1.4}changeMap(e.to,at[0],at[1]);if(e.msg)log(e.msg,'sys');return}
   if(it.kind==='chest'){P.flags.chests[e.id]=1;e.obj.cv=ART.chestOpen.cv;const g=rint(60,140);loots.push({gold:g,x:e.x+.4,y:e.y+.4,m:M.id,t:90,age:0});const pool=DROP_POOL.filter(id=>BASES[id].lv<=Math.max(5,P.lv+1));const id=pick(pool.filter(i=>!BASES[i].cls||BASES[i].cls===P.cls));loots.push({item:makeItem(id,Math.max(1,rollRar(1))),x:e.x+.6,y:e.y-.2,m:M.id,t:120,age:0});sfx('chest');log('Você encontrou um baú escondido!','sys');if(e.id==='bosque'&&!countItem('pagina')&&!P.flags.santuario){addItem(makeItem('pagina'));P.q.santuario=Math.max(P.q.santuario||0,1);log('Dentro do baú há uma página rasgada de diário. (Veja no inventário.)','sys');later(.6,()=>dlg('Página Rasgada',BASES.pagina.d,[{l:'Guardar'}]))}if(e.id==='santuario')P.q.santuario=Math.max(P.q.santuario||0,2);gainExp(40,1);save();return}
   if(it.kind==='sealed'){if(P.flags.sealed){dlg('Porta selada','A sala atrás da porta está vazia agora. Só restou o cheiro de incenso velho.',[]);return}
     if(!countItem('chave_osso')){dlg('Porta selada','Uma porta de ferro sob o templo, com um crânio entalhado no lugar da fechadura. Ninguém na vila admite saber o que tem do outro lado.',[]);if(!P.q.porta){P.q.porta=1;log('Descoberta: A Porta Selada.','sys');uiDirty=1}return}
@@ -2172,7 +2296,7 @@ function talk(n){const nm=n.n;if(n.role!=='villager')n.d8=dir8(scrAng(P.x-n.x,P.
     case'rshop':openShop(n.shop,nm);break;
     case'quest':rqTalk(n);break;
     case'talker':dlg(nm,pick(n.lines||['...']),[{l:'Até mais'}]);break;
-    case'travel':{const here=CITIES.find(c=>c.map===n.m);dlg(nm,`Posso abrir um portal para qualquer cidade. A passagem custa ${TRAVEL_COST} ouro. Para onde?`,[...CITIES.filter(c=>c!==here).map(c=>({l:`${c.n} — ${MAPS[c.map].name}`,pri:0,f:()=>travelTo(c)})),{l:'Agora não'}]);break}
+    case'travel':{const here=CITIES.find(c=>c.map===n.m);dlg(nm,`Posso abrir um portal para qualquer cidade. A passagem custa ${TRAVEL_COST} ouro. Para onde?`,[...CITIES.filter(c=>c!==here).map(c=>({l:`${c.n} — ${MAPS[c.map].name} (Nv ${({world:'1–11',gelo:'13–24',japao:'23–34',deserto:'33–44',selva:'41–52'})[c.map]||'?'})`,pri:0,f:()=>travelTo(c)})),{l:'Agora não'}]);break}
     case'smith':{const q=P.q.filho;const opts=[{l:'Ver mercadorias',pri:1,f:()=>openShop(P.q.filho>=3?'brunoMestre':'bruno',nm)},{l:'Refinar equipamento',f:()=>refineMenu(nm)}];
       if(q===0)dlg(nm,'Meu filho Tomé foi buscar lenha no bosque há três dias e não voltou. Os guardas dizem que viram goblins perto do rio... Se você for para aqueles lados, procure por ele. Por favor.',[{l:'Vou procurar',pri:1,f:()=>{P.q.filho=1;log('Missão: O Filho do Ferreiro','sys');sfx('ok');uiDirty=1}},...opts,{l:'Agora não'}]);
       else if(q===1)dlg(nm,'Nenhuma notícia do Tomé ainda? Dizem que os goblins levam prisioneiros para a toca deles, depois do rio.',[...opts,{l:'Continuo procurando'}]);
@@ -2314,7 +2438,7 @@ const ACH=[
   {id:'secret',n:'Segredos Antigos',d:'Derrote um chefe de dungeon secreta',f:s=>s.secret>=1,title:'Guardião de Segredos'}];
 function achCheck(){if(!P)return;P.ach=P.ach||{};const s=PS();for(const a of ACH)if(!P.ach[a.id]&&a.f(s)){P.ach[a.id]=1;toast('Conquista desbloqueada!',a.n+(a.title?` · título "${a.title}"`:''));log(`🏆 Conquista: ${a.n}${a.title?` (título "${a.title}" liberado)`:''}`,'loot','#ffd23a');sfx('victory');uiDirty=1}}
 function onKillStats(m){const s=PS();s.kills++;if(m.def.boss&&P.q.evo===1){P.q.evo=2;toast('A Prova do Mestre','Volte ao Mestre Varek em Pedravale para escolher seu caminho');uiDirty=1}if(m.def.boss){s.bosses++;if(m.kind==='mamute'||m.kind==='kyubi')s.secret++}if(m.champ)s.champs++;if(m.def.elite)s.elites++;if(m.legend)m.killedByP=1;if(m.ev&&EV.cur&&EV.cur.kind==='invasao')EV.cur.hit++;achCheck()}
-function onMapStats(id){const m=MAPS[id];if(!P||!m)return;const c=id==='world'?'world':m.city?id:null;if(c){const s=PS();if(!s.cities.includes(c)){s.cities.push(c);achCheck()}}}
+function onMapStats(id){const m=MAPS[id];if(!P||!m)return;markSeen(id);const c=id==='world'?'world':m.city?id:null;if(c){const s=PS();if(!s.cities.includes(c)){s.cities.push(c);achCheck()}}}
 function renderAch(tab){const body=$('#achBody');if(!body)return;body.textContent='';const tabs=document.createElement('div');tabs.className='achtabs';for(const [k,n] of [['ach','Conquistas'],['tit','Títulos'],['prof','Profissões'],['rank','Ranking online']]){const b=document.createElement('button');b.type='button';b.className='btn'+(tab===k?' pri':'');b.textContent=n;b.onclick=()=>renderAch(k);tabs.appendChild(b)}body.appendChild(tabs);
   const box=document.createElement('div');box.className='achlist';body.appendChild(box);P.ach=P.ach||{};
   const row=(l,r,done)=>{const d=document.createElement('div');d.className='achrow'+(done?' done':'');const a=document.createElement('b');a.textContent=l;const c=document.createElement('span');c.textContent=r;d.appendChild(a);d.appendChild(c);box.appendChild(d);return d};
@@ -2323,7 +2447,7 @@ function renderAch(tab){const body=$('#achBody');if(!body)return;body.textConten
   else if(tab==='prof'){const p=PROF();for(const [k,n,d] of [['min','Mineração','Veios brilhantes nas rochas (F para minerar)'],['pes','Pesca','F perto da água; aperte F de novo quando aparecer "!"'],['alq','Alquimia','Fale com as curandeiras e escolha Alquimia']])row(`${n} · nível ${profLv(p[k])}`,`${p[k]} pontos · ${d}`,0)}
   else{const list=[{n:P.name+' (você)',lv:P.lv,bk:PS().bosses,ac:Object.keys(P.ach).length},...[...remotes.values()].map(r=>({n:r.name,lv:r.lv,bk:r.bk||0,ac:r.ac||0}))].sort((a,b)=>b.lv-a.lv||b.bk-a.bk||b.ac-a.ac);list.forEach((e,i)=>row(`${i+1}º ${e.n}`,`Nível ${e.lv} · ${e.bk} chefes · ${e.ac} conquistas`,i===0));if(list.length===1)row('Só você online agora','Quando amigos entrarem, eles aparecem aqui.',0)}}
 function toggleAch(){const w=$('#achWin');if(!w)return;if(w.hidden){renderAch('ach');showWin('#achWin')}else hideWin('#achWin')}
-function featuresTick(dt){classTick(dt);updEvTick();updPet(dt);updEvents(dt);updFish(dt);tickNodes(dt)}
+function featuresTick(dt){classTick(dt);warpTick(dt);updEvTick();updPet(dt);updEvents(dt);updFish(dt);tickNodes(dt)}
 // ---------- hooks: art, world setup, input, render ----------
 function propOre(lit){const pb=new PB(40,34),cx=20,base=29;pb.ell(cx,base-9,15,10,(nx,ny)=>tone(lit?0x7a7480:0x5a5660,.12-(nx*.25+ny*.35)+((((nx+1)*6|0)+((ny+1)*5|0))&1?.05:-.03)));pb.ell(cx+8,base-5,7,5,(nx,ny)=>tone(lit?0x6a6470:0x4e4a54,.1-(nx*.2+ny*.3)));pb.ell(cx-9,base-4,6,4,(nx,ny)=>tone(0x605a66,.08-(nx*.2+ny*.3)));
   if(lit){const R=mulberry(77);for(let i=0;i<9;i++){const x=cx-10+Math.floor(R()*20),y=base-16+Math.floor(R()*11),c=i%3===0?0xffe9a0:i%3===1?0xe8903a:0xc8703a;pb.set(x,y,c);pb.set(x+1,y,tone(c,-.15));if(i%3===0)pb.set(x,y-1,0xfff8e0)}}
@@ -2357,7 +2481,7 @@ function updTouch(){if(!input.touch||!P)return;const code=setCode(P);const bts=d
 Object.assign(ELC,{rage:['#ffd0b0','#ff4a2a','#a8141a'],void:['#f4e0ff','#c08aff','#6a2aba'],nature:['#eaffb8','#7ae84a','#2a8a3a'],song:['#fff6c0','#ffd86a','#5ae0c8'],holy:['#ffffff','#fff0a0','#e8c050']});
 Object.assign(ELSL,{rage:'#ff5a3a',void:'#c08aff',nature:'#8af05a',song:'#ffe08a',holy:'#fff0a0'});
 const CLS_EL={g:'rage',l:'void',a:'nature'};
-const EVO_LV=15;
+const EVO_LV=20;
 const EVO={
   cav:{cls:'g',n:'Cavaleiro',el:'rage',aura:'#ffc84a',look:{cape:0xe8e0d0,trim:0xe8c050},pas:'+15% de defesa e 12% de chance de bloquear qualquer golpe.',d:'Tanque que protege o grupo: escudo, provocação e muralha sagrada.'},
   ber:{cls:'g',n:'Berserker',el:'rage',aura:'#ff2a1a',look:{cape:0x5a0a0a,trim:0xc8201a},pas:'Até +40% de dano quanto menos vida você tiver. Golpes roubam 4% do dano como vida.',d:'Dano bruto: sangramento, roubo de vida e fúria rubra.'},
@@ -2971,7 +3095,7 @@ function remoteMobs(){const out=[];for(const r of remotes.values())if(r.mobs)for
 // ===================== input, audio, save, boot =====================
 addEventListener('resize',resize);
 addEventListener('keydown',e=>{initAudio();if(state!=='play')return;const tg=e.target;if(tg&&tg.tagName==='INPUT'){if(e.key==='Escape')tg.blur();return}const k=e.key.toLowerCase();if(e.repeat&&!'wasd'.includes(k)&&!k.startsWith('arrow'))return;input.keys[k]=true;
-  if(k===' '||k==='shift'){doDash();e.preventDefault()}else if('qertg'.includes(k)&&k.length===1)useSkill(k.toUpperCase());else if(k>='1'&&k<='4')usePotion(['pot_hp1','pot_hp2','pot_mp','scroll'][+k-1]);else if(k==='f')fKey();else if(k==='k')toggleAch();
+  if(k===' '||k==='shift'){doDash();e.preventDefault()}else if('qertg'.includes(k)&&k.length===1)useSkill(k.toUpperCase());else if(k>='1'&&k<='4')usePotion(['pot_hp1','pot_hp2','pot_mp','scroll'][+k-1]);else if(k==='f')fKey();else if(k==='k')toggleAch();else if(k==='m')toggleWorldMap();
   else if(k==='i')toggleWin('#invWin',()=>uiDirty=1);else if(k==='c')toggleWin('#charWin',()=>uiDirty=1);else if(k==='j')toggleWin('#questWin',()=>uiDirty=1);else if(k==='h')toggleWin('#helpWin');else if(k==='p'){CFG.pixelFinish=(CFG.pixelFinish+1)%3;toast('Acabamento pixel',['desligado','suave','completo'][CFG.pixelFinish]);try{localStorage.setItem('pedravale-pix',CFG.pixelFinish)}catch(e){}}else if(k==='enter'){$('#chatin').focus();e.preventDefault()}
   else if(k==='escape'){for(const w of document.querySelectorAll('.win.modal'))if(w.id!=='death')hideWin('#'+w.id);hideTip()}else if(k==='+'||k==='=')setZoom(1);else if(k==='-')setZoom(-1);if(k.startsWith('arrow'))e.preventDefault()});
 addEventListener('keyup',e=>{input.keys[e.key.toLowerCase()]=false});addEventListener('blur',()=>{input.keys={};input.mdown=false});
@@ -2988,7 +3112,7 @@ function enableTouch(){if(input.touch)return;input.touch=true;$('#touch').hidden
   area.addEventListener('pointermove',mv);const up=e=>{if(e.pointerId!==id)return;id=null;input.joy=null;knob.style.transform=''};area.addEventListener('pointerup',up);area.addEventListener('pointercancel',up);
   for(const bt of document.querySelectorAll('#touch [data-a]'))bt.addEventListener('pointerdown',e=>{e.preventDefault();initAudio();const a=bt.dataset.a;if(a==='atk'){input.mdown=true;const u=()=>{input.mdown=false;bt.removeEventListener('pointerup',u);bt.removeEventListener('pointercancel',u)};bt.addEventListener('pointerup',u);bt.addEventListener('pointercancel',u)}else if(a==='dash')doDash();else if(a==='f')fKey();else if(a==='pot')usePotion(bestPot());else if(a==='chat'){document.body.classList.toggle('chaton');if(document.body.classList.contains('chaton'))$('#chatin').focus()}else if(a==='ach')toggleAch();else if(a==='i')toggleWin('#invWin',()=>uiDirty=1);else useSkill(a)})})();
 $('#zIn').onclick=()=>setZoom(1);$('#zOut').onclick=()=>setZoom(-1);
-$('#bInv').onclick=()=>toggleWin('#invWin',()=>uiDirty=1);$('#bChar').onclick=()=>toggleWin('#charWin',()=>uiDirty=1);$('#bQuest').onclick=()=>toggleWin('#questWin',()=>uiDirty=1);$('#bAch').onclick=toggleAch;$('#bHelp').onclick=()=>toggleWin('#helpWin');
+$('#bInv').onclick=()=>toggleWin('#invWin',()=>uiDirty=1);$('#bChar').onclick=()=>toggleWin('#charWin',()=>uiDirty=1);$('#bQuest').onclick=()=>toggleWin('#questWin',()=>uiDirty=1);$('#bAch').onclick=toggleAch;$('#bWorld').onclick=toggleWorldMap;$('#bHelp').onclick=()=>toggleWin('#helpWin');
 $('#bSnd').onclick=()=>{initAudio();toggleWin('#sndWin')};$('#bMenu').onclick=toMenu;$('#piYes').onclick=acceptInv;$('#piNo').onclick=declineInv;$('#bRevive').onclick=revive;
 // draggable windows (desktop)
 document.querySelectorAll('.win.modal .tb').forEach(tb=>tb.addEventListener('pointerdown',e=>{if(e.target.closest('button')||innerWidth<760)return;const w=tb.parentElement,r=w.getBoundingClientRect(),ox=e.clientX-r.left,oy=e.clientY-r.top;w.style.transform='none';w.style.left=r.left+'px';w.style.top=r.top+'px';w.style.right='auto';
@@ -3044,7 +3168,7 @@ function frame(now){let dt=Math.min(.05,(now-last)/1000);last=now;if(hitstop>0){
   else{for(const n of npcs)if(n.m==='world')updNpc(n,dt);TIME=(TIME+dt/CFG.dayLength)%1}
   tickFx(dt);try{render(dt)}catch(err){console.error(err)}requestAnimationFrame(frame)}
 let saveT=15;
-function boot(hot){resize();LS=lightSprites();ART=buildArt();buildArtFeat(ART);MAPS.world=genWorld(ART);MAPS.dungeon=genDungeon(ART);MAPS.cripta=genCrypt(ART);MAPS.forte=genForte(ART);MAPS.santuario=genSantuario(ART);genAllRegions(ART);decorateWorld(ART);addFeatureWorld(ART);MAPS.world.npcDefs.push({id:'viajante',n:'Ysolde, a Guardiã do Portal',x:17.6,y:21.6,look:{skin:SKINS[0],hair:0x8a5ad8,hs:'long',chest:0x3a2a5a,ct:'robe',robe:1,trim:0xc8a0ff,legs:0x3a2a5a,boots:0x2a2018,hd:'hood',hdCol:0x3a2a5a,wt:'staff',wcol:0x6a4a8a,orb:0xc8a0ff},role:'travel'});MAPS.world.npcDefs.push({id:'varek',n:'Mestre Varek, o Instrutor',x:22.6,y:17.4,look:{skin:SKINS[1],hair:0x8a8a8a,hs:'short',beard:1,chest:0x6a2a2a,ct:'plate',trim:0xe8c050,legs:0x3a3a44,boots:0x2a2018,cape:0x2a2a5a,hd:null,wt:'greatsword',wcol:0xd8dee8},role:'evo'});addObj(MAPS.world,{x:16.5,y:22.5,k:39.2,cv:ART.portalBase.cv,ox:ART.portalBase.ox,oy:ART.portalBase.oy,portal:1,keep:1,light:{dx:0,dy:-28,r:100,cold:1}});M=MAPS.world;
+function boot(hot){resize();LS=lightSprites();ART=buildArt();buildArtFeat(ART);MAPS.world=genWorld(ART);MAPS.dungeon=genDungeon(ART);MAPS.cripta=genCrypt(ART);MAPS.forte=genForte(ART);MAPS.santuario=genSantuario(ART);genAllRegions(ART);genWorld2(ART);decorateWorld(ART);addFeatureWorld(ART);MAPS.world.npcDefs.push({id:'viajante',n:'Ysolde, a Guardiã do Portal',x:17.6,y:21.6,look:{skin:SKINS[0],hair:0x8a5ad8,hs:'long',chest:0x3a2a5a,ct:'robe',robe:1,trim:0xc8a0ff,legs:0x3a2a5a,boots:0x2a2018,hd:'hood',hdCol:0x3a2a5a,wt:'staff',wcol:0x6a4a8a,orb:0xc8a0ff},role:'travel'});MAPS.world.npcDefs.push({id:'varek',n:'Mestre Varek, o Instrutor',x:22.6,y:17.4,look:{skin:SKINS[1],hair:0x8a8a8a,hs:'short',beard:1,chest:0x6a2a2a,ct:'plate',trim:0xe8c050,legs:0x3a3a44,boots:0x2a2018,cape:0x2a2a5a,hd:null,wt:'greatsword',wcol:0xd8dee8},role:'evo'});addObj(MAPS.world,{x:16.5,y:22.5,k:39.2,cv:ART.portalBase.cv,ox:ART.portalBase.ox,oy:ART.portalBase.oy,portal:1,keep:1,light:{dx:0,dy:-28,r:100,cold:1}});M=MAPS.world;
   for(const id in MAPS){const m=MAPS[id];for(const [k,r,n] of m.spawns)for(let i=0;i<n;i++)spawnMob(k,m,r);if(m.boss)spawnMob(m.boss[0],m,null,m.boss[1]);if(m.dummies)for(const d of m.dummies)spawnMob('boneco',m,null,d)}
   spawnNpcs();spawnBots();introUI();netInit();requestAnimationFrame(frame);if(hot&&hot.save)startGame(hot.save)}
 const HOT=window.claude?.hot;if(HOT?.ready)HOT.ready(boot);else boot(HOT?.data??{});
