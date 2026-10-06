@@ -2148,7 +2148,7 @@ function wakeScare(m){m.sleep=0;m.d8=dir8(scrAng(P.x-m.x,P.y-m.y));m.look=MLOOK.
 function aggro(m,t){if(m.def.ai==='dummy')return;if(m.sleep){wakeScare(m);return}if(!m.target){m.target=t;m.ret=false;if(m.def.fam==='goblin'||m.def.fam==='morto-vivo'){if(!m.shouted&&Math.random()<.5&&m.def.fam==='goblin'){m.shouted=1;say(m,pick(['Intruso!','Pega ele!','Humano!']))}for(const o of mobs)if(o!==m&&o.m===m.m&&!o.target&&o.def.fam===m.def.fam&&dist(o,m)<7&&!o.dying)o.target=t}
   if(m.def.boss){bossActive=m;say(m,{goblin_chefe:'Quem ousa entrar na minha toca?!',goblin_rei:'Ajoelhe-se diante do REI!',abade:'Mais um para o meu ossuário...'}[m.kind]||'...');sfx('roar')}}}
 function say(e,txt,t=3){e.bub={txt,t}}
-function hitMob(m,mult,o={}){if(m.dead||m.dying)return 0;const d=D();let dmg=d.atk*mult*rnd(.9,1.1);if(!o.pet)dmg*=comboMult(o)*evoDmg(m,o);const fam=m.def.fam;if(fam==='fera')dmg*=1+d.A.vsBeast/100;if(fam==='goblin')dmg*=1+d.A.vsGoblin/100;if(fam==='morto-vivo')dmg*=1+d.A.vsUndead/100;if(o.skill)dmg*=1+d.A.skill/100;if(o.holy&&fam==='morto-vivo')dmg*=o.holy>1?2:1.5;const shatter=o.shock&&m.frozenT>0;if(shatter)dmg*=2;
+function hitMob(m,mult,o={}){if(m.dead||m.dying)return 0;if(!o.pet&&lvMiss(m,o)){if(!m.target)aggro(m,P);m.hpShow=6;return 0}const d=D();let dmg=d.atk*mult*rnd(.9,1.1);if(!o.pet)dmg*=comboMult(o)*evoDmg(m,o)*lvPen(m,o);const fam=m.def.fam;if(fam==='fera')dmg*=1+d.A.vsBeast/100;if(fam==='goblin')dmg*=1+d.A.vsGoblin/100;if(fam==='morto-vivo')dmg*=1+d.A.vsUndead/100;if(o.skill)dmg*=1+d.A.skill/100;if(o.holy&&fam==='morto-vivo')dmg*=o.holy>1?2:1.5;const shatter=o.shock&&m.frozenT>0;if(shatter)dmg*=2;
   let crit=Math.random()*100<d.crit+comboCrit();if(P.nextCrit&&!o.quiet){crit=true;P.nextCrit=0}if(crit)dmg*=critMult();let tag=null;if(P.cls==='l'&&!o.quiet){if(P.stealth>0){dmg*=3;P.stealth=0;tag='ASSASSINATO!'}else if(o.melee&&(m.target!==P||m.stunT>0)){dmg*=1.6;tag='Pelas costas!'}}dmg*=1-m.def.def/(m.def.def+50);let blocked=false;
   if(m.def.block&&!o.breakGuard&&m.stunT<=0){const ta=Math.atan2(P.y-m.y,P.x-m.x);if(angDiff(ta,m.face)<1.15){dmg*=.25;blocked=true}}
   dmg=Math.max(1,Math.round(dmg));
@@ -2705,6 +2705,13 @@ function drawDmgNum(t,fs,toD){const k=t.t/t.life,tt=Math.min(t.t,1.2),dir=t.vx>=
   vx.font=`700 ${sz}px "Pixelify Sans", monospace`;vx.lineJoin='round';vx.lineWidth=Math.max(3,sz/3.2);vx.strokeStyle=crit?'#3a0a00':'#1a0e0a';vx.strokeText(t.txt,dx,dy);
   const gr=vx.createLinearGradient(0,dy-sz,0,dy);if(crit){gr.addColorStop(0,'#fffbd0');gr.addColorStop(1,'#ffc21a')}else if(t.col==='#ffffff'){gr.addColorStop(0,'#ffffff');gr.addColorStop(1,'#d8d0c0')}else{gr.addColorStop(0,t.col);gr.addColorStop(1,t.col)}
   vx.fillStyle=gr;vx.fillText(t.txt,dx,dy);vx.globalAlpha=1}
+// ===================== level-gap balance (stops kiting monsters far above your level) =====================
+const isRangedHit=o=>!o.melee&&P&&(P.cls==='a'||P.cls==='m'||o.el==='song');
+function lvGap(m){return(m.lv||1)-(P?P.lv:1)}
+function lvPen(m,o){const g=lvGap(m);if(g<=2)return 1;return Math.max(.25,1-.07*(g-2)-(isRangedHit(o)?.03*(g-2):0))}
+function lvMiss(m,o){const g=lvGap(m);if(g<=2||m.def.ai==='dummy')return false;const ch=Math.min(.6,.06*(g-2)+(isRangedHit(o)?.04*(g-2):0));if(Math.random()<ch){if(!o.quiet){addText(m,'Errou','#cfc6b8');sfx('swing')}if(isRangedHit(o))rangedProvoke(m);return true}if(isRangedHit(o))rangedProvoke(m);return false}
+function rangedProvoke(m){if(m.def.boss||m.def.ai==='dummy'||!P)return;const dd=Math.hypot(m.x-P.x,m.y-P.y);if(dd<4.5)return;m.target=P;m.ret=false;const g=lvGap(m);m.buffT=Math.max(m.buffT||0,g>=3?5:2.5);
+  if(g>=3&&!(m.lungeCD>T)&&dd>5&&dd<11){m.lungeCD=T+6;const a=Math.atan2(P.y-m.y,P.x-m.x),st=Math.min(dd-1.6,3.2);let nx=m.x+Math.cos(a)*st,ny=m.y+Math.sin(a)*st;if(!blockedAt(M,nx,ny,.3)){ghostFx(m,'#ff8a6a');m.x=nx;m.y=ny;addText(m,'Avança!','#ff8a6a');dust(m.x,m.y,6)}}}
 
 // ===================== skill trees: 3 branches per class + evolution branch, assignable hotbar =====================
 // node: [code, branch, tier, levelReq, kind('a' active / 'p' passive)]
